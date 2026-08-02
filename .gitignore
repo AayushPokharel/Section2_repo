@@ -47,3 +47,11 @@ Thumbs.db
 
 # Logs
 *.log
+
+.terraform.lock.hcl
+
+# Revealed step files land in root during class — don't commit them mid-build
+/[0-9][0-9]-*.tf
+# Never commit secrets
+*.auto.tfvars
+secrets.tfvars
