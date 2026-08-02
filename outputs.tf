@@ -16,15 +16,6 @@ output "windows_vm_private_ip" {
   value = azurerm_network_interface.windows.private_ip_address
 }
 
-output "app_service_url" {
-  description = "Production App Service URL."
-  value       = "https://${azurerm_linux_web_app.this.default_hostname}"
-}
-
-output "app_service_staging_url" {
-  value = "https://${azurerm_linux_web_app_slot.staging.default_hostname}"
-}
-
 output "storage_account_name" {
   value = azurerm_storage_account.this.name
 }

@@ -35,22 +35,6 @@ resource "azurerm_subnet" "data" {
   private_endpoint_network_policies = "Disabled" # required to host the private endpoint in Step 9
 }
 
-# Dedicated, delegated subnet for App Service regional VNet integration
-resource "azurerm_subnet" "appsvc" {
-  name                 = "snet-appsvc-integration"
-  resource_group_name  = azurerm_resource_group.this.name
-  virtual_network_name = azurerm_virtual_network.this.name
-  address_prefixes     = ["10.20.4.0/24"]
-
-  delegation {
-    name = "appservice-delegation"
-    service_delegation {
-      name    = "Microsoft.Web/serverFarms"
-      actions = ["Microsoft.Network/virtualNetworks/subnets/action"]
-    }
-  }
-}
-
 # Web-tier NSG: HTTPS/HTTP from the internet, SSH only from the mgmt CIDR
 resource "azurerm_network_security_group" "web" {
   name                = "nsg-web-${local.name_prefix}"

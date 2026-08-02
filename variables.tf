@@ -32,12 +32,6 @@ variable "vm_size" {
   default     = "Standard_B2s"
 }
 
-variable "app_service_sku" {
-  description = "App Service Plan SKU. S1+ is required for deployment slots AND regional VNet integration."
-  type        = string
-  default     = "S1"
-}
-
 variable "storage_replication_type" {
   description = "Storage account replication (LRS, ZRS, GRS...)."
   type        = string
